@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 public class UI extends Application {
     public static TasksDAO Data;
 
+    // Переписать. Плохо
     public static void Launch(String[] args, TasksDAO realisation) {
         Data = realisation;
         launch(args);
