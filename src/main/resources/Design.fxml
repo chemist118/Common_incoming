@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<AnchorPane fx:id="mainForm" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="597.0" prefWidth="1059.0"
+            style="-fx-background-color: #aaaaaa;" xmlns="http://javafx.com/javafx/8.0.232-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+    <children>
+        <TableView fx:id="tableSubTasks" editable="true" layoutX="1.0" layoutY="402.0" prefHeight="195.0"
+                   prefWidth="1059.0" style="-fx-background-color: #2E3348;" AnchorPane.bottomAnchor="0.0"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="402.0"/>
+        <ToolBar fx:id="btsBar" layoutY="-6.0" prefHeight="40.0" prefWidth="1059.0"
+                 style="-fx-background-color: #2E3348;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="-6.0">
+            <items>
+                <Button fx:id="btAdd" mnemonicParsing="false" style="-fx-background-color: #f39c63;" text="Добавить"/>
+                <Button fx:id="btRemove" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0"
+                        style="-fx-background-color: #f39c63;" text="Удалить"/>
+                <Button fx:id="btSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0"
+                        style="-fx-background-color: #f39c63;" text="Поиск"/>
+                <Button fx:id="btClear" disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0"
+                        style="-fx-background-color: #f39c63;" text="Сброс"/>
+                <Button fx:id="btSave" mnemonicParsing="false" style="-fx-background-color: #f39c63;" text="Сохранить"/>
+                <Button fx:id="btOpenFile" mnemonicParsing="false" style="-fx-background-color: #f39c63;"
+                        text="Загрузить"/>
+            </items>
+        </ToolBar>
+        <AnchorPane layoutY="34.0" prefHeight="334.0" prefWidth="1059.0" style="-fx-background-color: #fafafa;"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <TableView fx:id="tableTasks" editable="true" prefHeight="328.0" prefWidth="1059.0"
+                           style="-fx-background-color: #2E3348;" AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0"/>
+            </children>
+        </AnchorPane>
+        <ToolBar fx:id="btsSubBar" layoutY="362.0" prefHeight="40.0" prefWidth="1059.0"
+                 style="-fx-background-color: #2E3348;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="362.0">
+            <items>
+                <Button fx:id="btSubAdd" mnemonicParsing="false" style="-fx-background-color: #f39c63;"
+                        text="Добавить"/>
+                <Button fx:id="btSubRemove" mnemonicParsing="false" style="-fx-background-color: #f39c63;"
+                        text="Удалить"/>
+                <Button fx:id="btUP" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0"
+                        style="-fx-background-color: #f39c63;" text="/\"/>
+                <Button fx:id="btDown" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0"
+                        style="-fx-background-color: #f39c63;" text="\\/"/>
+            </items>
+        </ToolBar>
+        <Pane fx:id="panelSearch" layoutX="186.0" layoutY="34.0" prefHeight="225.0" prefWidth="310.0"
+              style="-fx-background-color: #fafafa; -fx-border-color: #FFCC00; -fx-border-width: 4;" visible="false">
+            <children>
+                <RadioButton fx:id="rbEnded" layoutX="13.0" layoutY="113.0" mnemonicParsing="false" text="Завершенные"/>
+                <RadioButton fx:id="rbNotEnded" layoutX="13.0" layoutY="135.0" mnemonicParsing="false"
+                             text="Незавершенные"/>
+                <RadioButton fx:id="rbAll" layoutX="13.0" layoutY="92.0" mnemonicParsing="false" selected="true"
+                             text="Все"/>
+                <TextField fx:id="tbTags" layoutX="13.0" layoutY="14.0" prefHeight="26.0" prefWidth="285.0"
+                           promptText="Список тегов через запятую">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </TextField>
+                <Button fx:id="btSearchOK" layoutX="221.0" layoutY="88.0" mnemonicParsing="false" prefHeight="50.0"
+                        prefWidth="75.0" text="ОК"/>
+                <CheckBox fx:id="cbFireTasks" layoutX="13.0" layoutY="156.0" mnemonicParsing="false"
+                          text="Просроченные или &quot;горящие&quot;" visible="false"/>
+                <ComboBox fx:id="cbSpecialSearch" layoutX="13.0" layoutY="187.0" prefHeight="25.0" prefWidth="285.0"
+                          promptText="Особые возможности">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Ничего"/>
+                            <String fx:value="Задачи на ближайший месяц"/>
+                            <String fx:value="Половина подзадач завершена"/>
+                            <String fx:value="Отмеченные >= 3 самых часто используемых тегов"/>
+                            <String fx:value="Три задачи с ближайшим крайним сроком"/>
+                            <String fx:value="Четыре задачи с самым отдалённым крайним сроком"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <TextField fx:id="tbDescription" layoutX="13.0" layoutY="50.0" prefHeight="26.0" prefWidth="285.0"
+                           promptText="Строка в содержании">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </TextField>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Pane>
+    </children>
+</AnchorPane>
